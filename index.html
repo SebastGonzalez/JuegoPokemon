@@ -146,6 +146,52 @@
         }
 
         span { font-size: 10px; font-weight: bold; text-transform: uppercase; padding: 0 4px; }
+		
+		.btn-mp {
+    background: #009ee3; /* Azul Mercado Pago */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: background 0.2s;
+}
+
+.btn-mp:hover {
+    background: #0081ba;
+}
+
+.alias-container {
+    background: rgba(0,0,0,0.2);
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 10px;
+}
+
+.alias-container span {
+    display: block;
+    color: #ccc;
+    margin-bottom: 3px;
+}
+
+.btn-copy-alias {
+    background: #444;
+    color: white;
+    border: none;
+    font-size: 9px;
+    padding: 3px 6px;
+    margin-top: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-copy-alias:hover {
+    background: #666;
+}
     </style>
 </head>
 <body>
@@ -166,7 +212,26 @@
             <div id="secretCard" class="secret-card"></div>
             <button class="btn-action" onclick="cambiarObjetivo()" style="background: #28a745;">🎲 RANDOMIZAR</button>
             <button class="btn-action" onclick="toggleSecret()">👁️ OCULTAR</button>
+			
+			<div class="donation-box">
+    <p>¿Te gusta el juego?</p>
+    <a href="https://link.mercadopago.com.ar/tuliomaster" target="_blank">
+        <button class="btn-mp">
+            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.9/mercadopago/logo__small.png" width="15" style="vertical-align: middle;"> 
+            Donar por Mercado Pago
+        </button>
+    </a>
+    
+    <div class="alias-container">
+        <span>O usa mi Alias:</span>
+        <strong id="aliasText">TULIO.MASTER</strong>
+        <button onclick="copiarAlias()" class="btn-copy-alias">Copiar</button>
+    </div>
+</div>
+			
         </div>
+		
+		
 
         <div id="tablero" class="grid-container"></div>
     </div>
@@ -264,6 +329,12 @@
         }
 
         generarJuego();
+		
+		function copiarAlias() {
+    const alias = document.getElementById('aliasText').innerText;
+    navigator.clipboard.writeText(alias);
+    alert("Alias copiado: " + alias + ". ¡Gracias por tu apoyo!");
+}
     </script>
 </body>
 </html>
